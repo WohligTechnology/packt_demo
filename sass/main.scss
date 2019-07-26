@@ -147,8 +147,7 @@ $dropdown-margin-top: 0.125rem !default;
 $dropdown-bg: $white !default;
 $dropdown-border-color: rgba($black, 0.15) !default;
 $dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.175) !default;
-// @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../node_modules/bootstrap/scss/bootstrap";
+
 body {
   padding-top: 70px;
 }
