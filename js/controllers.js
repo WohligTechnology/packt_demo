@@ -80,6 +80,29 @@ angular
         $scope.errLoading = true;
       } else {
         $scope.allCharacters = data;
+        $scope.avgHeight = _.chain(allCharacters)
+          .map("heightInt")
+          .compact()
+          .mean()
+          .value();
+        $scope.minAgeCharacter = _.minBy(allCharacters, function(o) {
+          return o.birthOfYear;
+        });
+        $scope.maxAgeCharacter = _.maxBy(allCharacters, function(o) {
+          return o.birthOfYear;
+        });
+        $scope.diffCharacter = _.subtract(
+          $scope.maxAgeCharacter.birthOfYear,
+          $scope.minAgeCharacter.birthOfYear
+        );
+        console.log(
+          "$scope.minAgeCharacter",
+          $scope.minAgeCharacter,
+          "$scope.maxAgeCharacter",
+          $scope.maxAgeCharacter,
+          "$scope.diffCharacter",
+          $scope.diffCharacter
+        );
       }
     });
   })
