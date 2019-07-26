@@ -5,22 +5,19 @@ var navigationservice = angular
   .factory("NavigationService", function() {
     var navigation = [
       {
-        name: "Home",
+        name: "Fizz Buzz",
         classis: "active",
-        anchor: "home",
-        subnav: [
-          {
-            name: "Subnav1",
-            classis: "active",
-            anchor: "home"
-          }
-        ]
+        anchor: "home"
       },
       {
-        name: "Form",
+        name: "Pagination",
         classis: "active",
-        anchor: "form",
-        subnav: []
+        anchor: "pagination"
+      },
+      {
+        name: "Star wars",
+        classis: "active",
+        anchor: "star-wars"
       }
     ];
 

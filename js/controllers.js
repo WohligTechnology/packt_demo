@@ -1,9 +1,5 @@
 angular
-  .module("phonecatControllers", [
-    "templateservicemod",
-    "navigationservice",
-    "ui.bootstrap"
-  ])
+  .module("phonecatControllers", ["templateservicemod", "navigationservice"])
 
   .controller("HomeCtrl", function(
     $scope,
@@ -16,31 +12,38 @@ angular
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.mySlides = [
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg"
-    ];
+    $scope.numbers = _.times(100, function(n) {
+      var number = n + 1;
+      var obj = {
+        number: number,
+        fizz: number % 3 == 0,
+        buzz: number % 5 == 0
+      };
+      return obj;
+    });
   })
 
-  .controller("FormCtrl", function(
+  .controller("PaginationCtrl", function(
     $scope,
     TemplateService,
     NavigationService,
     $timeout
   ) {
-    $scope.template = TemplateService.changecontent("form"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("Form"); //This is the Title of the Website
+    $scope.template = TemplateService.changecontent("pagination"); //Use same name of .html file
+    $scope.menutitle = NavigationService.makeactive("pagination"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
-    $scope.formSubmitted = false;
-
-    $scope.submitForm = function(data) {
-      console.log(data);
-      $scope.formSubmitted = true;
-    };
+  })
+  .controller("StarWarsCtrl", function(
+    $scope,
+    TemplateService,
+    NavigationService,
+    $timeout
+  ) {
+    $scope.template = TemplateService.changecontent("star-wars"); //Use same name of .html file
+    $scope.menutitle = NavigationService.makeactive("star-wars"); //This is the Title of the Website
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
   })
 
   .controller("headerctrl", function($scope, TemplateService) {
@@ -51,33 +54,5 @@ angular
       toParams,
       fromState,
       fromParams
-    ) {
-      $(window).scrollTop(0);
-    });
-    $.fancybox.close(true);
-  })
-
-  .controller("languageCtrl", function(
-    $scope,
-    TemplateService,
-    $translate,
-    $rootScope
-  ) {
-    $scope.changeLanguage = function() {
-      console.log("Language CLicked");
-
-      if (!$.jStorage.get("language")) {
-        $translate.use("hi");
-        $.jStorage.set("language", "hi");
-      } else {
-        if ($.jStorage.get("language") == "en") {
-          $translate.use("hi");
-          $.jStorage.set("language", "hi");
-        } else {
-          $translate.use("en");
-          $.jStorage.set("language", "en");
-        }
-      }
-      //  $rootScope.$apply();
-    };
+    ) {});
   });
