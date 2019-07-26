@@ -2,19 +2,25 @@
   <div class="row">
     <div class="col-md-8">
       <h2>
-        Star Wars Characters with Pagination: {{ totalStarWarsCharacters }}
+        Star Wars Characters
+        <span class="small">(Total:{{ totalStarWarsCharacters }})</span>
       </h2>
     </div>
-    <div class="col-md-4" style="margin-top: 28px;">
+    <div class="col-md-4">
       <input
         type="text"
         ng-change="getStarWarsCharacters(searchText,'search')"
         placeholder="Search Here..."
         ng-model="searchText"
+        class="form-control"
       />
     </div>
   </div>
-  <table class="table table-striped">
+  <div ng-if="!starWarsCharacters">
+    <h4 class="text-center">Loading ...</h4>
+  </div>
+
+  <table class="table table-striped" ng-if="starWarsCharacters">
     <tr>
       <th>#</th>
       <th>Name</th>
@@ -23,7 +29,7 @@
     <tr ng-repeat="character in starWarsCharacters track by $index">
       <td>{{ $index + 1 + starWarsCharactersPageIndex }}</td>
       <td>{{ character.name }}</td>
-      <td>{{ character.eye_color }}</td>
+      <td class="title-text">{{ character.eye_color }}</td>
     </tr>
   </table>
 

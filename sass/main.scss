@@ -1,9 +1,3 @@
-/* Bootstrap Variables Goes Here */
-// Colors
-//
-// Grayscale and brand colors for use across Bootstrap.
-
-// Start with assigning color names to specific hex values.
 $white: #fff !default;
 $black: #000 !default;
 $red: #d9534f !default;
@@ -148,10 +142,7 @@ $dropdown-bg: $white !default;
 $dropdown-border-color: rgba($black, 0.15) !default;
 $dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.175) !default;
 // @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../bower_components/bootstrap/scss/bootstrap";
-body {
-  padding-top: 70px;
-}
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 img.loading {
   text-align: center;
@@ -263,5 +254,12 @@ footer {
   width: 100%;
   display: block;
 }
+h2.small {
+  font-size: 20%;
+  font-weight: 100;
+}
 
+.title-text {
+  text-transform: capitalize;
+}
 @import "mobile";
