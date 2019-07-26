@@ -13,7 +13,6 @@ firstapp.config(function(
   $locationProvider
 ) {
   // for http request with session
-  $httpProvider.defaults.withCredentials = true;
   $stateProvider
     .state("home", {
       url: "/",
