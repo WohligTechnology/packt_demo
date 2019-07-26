@@ -1,5 +1,5 @@
 var starwarsservicemod = angular.module("starwarsservicemod", []);
-starwarsservicemod.service("StarwarService", function() {
+starwarsservicemod.service("StarwarService", function($http) {
   this.title = "Home";
   this.meta = "Google";
   this.metadesc = "Home";
@@ -20,17 +20,19 @@ starwarsservicemod.service("StarwarService", function() {
     data.content = "views/content/" + page + ".html";
     return data;
   };
-  this.callStarWars = function() {
+  this.callStarWars = function(param, event, itemsPerPage, searchText) {
+    var returnObj = {};
     var url = "";
+    returnObj.page = 1;
     if (event == "pageChange") {
-      $scope.starWarsCharactersPage = param;
-      url = "?page=" + $scope.starWarsCharactersPage;
-      if ($scope.searchText) {
-        url = url + "&search=" + $scope.searchText;
+      returnObj.page = param;
+      url = "?page=" + returnObj.page;
+      if (searchText) {
+        url = url + "&search=" + searchText;
       }
     }
     if (event == "search") {
-      $scope.starWarsCharactersPage = 1;
+      returnObj.page = 1;
       url = "?search=" + param;
     }
     $http({
@@ -38,11 +40,12 @@ starwarsservicemod.service("StarwarService", function() {
       url: "https://swapi.co/api/people/" + url
     }).then(
       function successCallback(response) {
-        $scope.totalStarWarsCharacters = response.data.count;
-        $scope.starWarsCharacters = response.data.results;
-        $scope.starWarsCharactersPageIndex =
-          ($scope.starWarsCharactersPage - 1) * $scope.itemsPerPage;
-          
+        returnObj.totalStarWarsCharacters = response.data.count;
+        returnObj.starWarsCharacters = response.data.results;
+        returnObj.starWarsCharactersPageIndex =
+          (returnObj.page - 1) * itemsPerPage;
+        console.log("returnObj-->", returnObj);
+        return returnObj;
       },
       function errorCallback(response) {}
     );

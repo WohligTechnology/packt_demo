@@ -46,33 +46,14 @@ angular
     $scope.totalStarWarsCharacters = 0;
     $scope.searchText = "";
     $scope.getStarWarsCharacters = function(param, event) {
-      // Call a Service Here
-      var url = "";
-      if (event == "pageChange") {
-        $scope.starWarsCharactersPage = param;
-        url = "?page=" + $scope.starWarsCharactersPage;
-        if ($scope.searchText) {
-          url = url + "&search=" + $scope.searchText;
-        }
-      }
-      if (event == "search") {
-        $scope.starWarsCharactersPage = 1;
-        url = "?search=" + param;
-      }
-      $http({
-        method: "GET",
-        url: "https://swapi.co/api/people/" + url
-      }).then(
-        function successCallback(response) {
-          $scope.totalStarWarsCharacters = response.data.count;
-          $scope.starWarsCharacters = response.data.results;
-          $scope.starWarsCharactersPageIndex =
-            ($scope.starWarsCharactersPage - 1) * $scope.itemsPerPage;
-        },
-        function errorCallback(response) {}
+      var returnObj = {};
+      returnObj = StarwarService.callStarWars(
+        param,
+        event,
+        10,
+        $scope.searchText
       );
-      // var returnObj=
-      // End
+      console.log("returnObj", returnObj);
     };
     // Default Call to getStarWarsCharacters with default page as 1
     $scope.getStarWarsCharacters(1, "pageChange");
