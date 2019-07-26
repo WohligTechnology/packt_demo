@@ -48,6 +48,7 @@ angular
         data
       ) {
         if (err) {
+          $scope.errLoading = true;
         } else {
           $scope.starWarsCharactersPage = data.page;
           $scope.starWarsCharacters = data.starWarsCharacters;
@@ -76,7 +77,7 @@ angular
     $scope.navigation = NavigationService.getnav();
     StarwarService.getAllStarWarsCharacter(function(err, data) {
       if (err) {
-        $scope.allCharacters = [];
+        $scope.errLoading = true;
       } else {
         $scope.allCharacters = data;
       }
