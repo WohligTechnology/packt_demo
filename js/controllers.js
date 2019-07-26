@@ -46,15 +46,20 @@ angular
     $scope.totalStarWarsCharacters = 0;
     $scope.searchText = "";
     $scope.getStarWarsCharacters = function(param, event) {
-      var returnObj = {};
-      returnObj = StarwarService.callStarWars(
-        param,
-        event,
-        10,
-        $scope.searchText
-      );
-      console.log("returnObj", returnObj);
+      StarwarService.callStarWars(param, event, 10, $scope.searchText, function(
+        err,
+        data
+      ) {
+        if (err) {
+        } else {
+          $scope.starWarsCharactersPage = data.page;
+          $scope.starWarsCharacters = data.starWarsCharacters;
+          $scope.starWarsCharactersPageIndex = data.starWarsCharactersPageIndex;
+          $scope.totalStarWarsCharacters = data.totalStarWarsCharacters;
+        }
+      });
     };
+
     // Default Call to getStarWarsCharacters with default page as 1
     $scope.getStarWarsCharacters(1, "pageChange");
 
