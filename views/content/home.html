@@ -1,3 +1,25 @@
 <div class="container">
-  <div class="row"></div>
+  <h2>Fizz Buzz</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>
+          Number
+        </th>
+        <th>
+          Fizz
+        </th>
+        <th>
+          Buzz
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="number in numbers">
+        <td>{{ number.number }}</td>
+        <td><span ng-if="number.fizz">Fizz</span></td>
+        <td><span ng-if="number.buzz">Buzz</span></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -11,6 +11,16 @@ angular
     $scope.menutitle = NavigationService.makeactive("Home"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.numbers = _.times(100, function(n) {
+      var number = n + 1;
+      var obj = {
+        number: number,
+        fizz: number % 3 == 0,
+        buzz: number % 5 == 0
+      };
+      return obj;
+    });
   })
 
   .controller("PaginationCtrl", function(

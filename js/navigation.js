@@ -5,7 +5,7 @@ var navigationservice = angular
   .factory("NavigationService", function() {
     var navigation = [
       {
-        name: "Numers Demo",
+        name: "Fizz Buzz",
         classis: "active",
         anchor: "home"
       },
