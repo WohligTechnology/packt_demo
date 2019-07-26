@@ -27,7 +27,9 @@ starwarsservicemod.factory("StarwarService", function($http) {
             (returnObj.page - 1) * itemsPerPage;
           callback(null, returnObj);
         },
-        function errorCallback(response) {}
+        function errorCallback(response) {
+          callback("Error", response);
+        }
       );
     }
   };
