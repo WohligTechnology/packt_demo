@@ -1,5 +1,10 @@
 angular
-  .module("phonecatControllers", ["templateservicemod", "navigationservice"])
+  .module("phonecatControllers", [
+    "templateservicemod",
+    "navigationservice",
+    "starwarsservicemod",
+    "ui.bootstrap"
+  ])
 
   .controller("HomeCtrl", function($scope, TemplateService, NavigationService) {
     $scope.template = TemplateService.changecontent("home"); //Use same name of .html file
@@ -22,7 +27,8 @@ angular
     $scope,
     TemplateService,
     NavigationService,
-    $http
+    $http,
+    StarwarService
   ) {
     $scope.template = TemplateService.changecontent("pagination"); //Use same name of .html file
     $scope.menutitle = NavigationService.makeactive("Pagination"); //This is the Title of the Website
@@ -40,10 +46,11 @@ angular
     $scope.totalStarWarsCharacters = 0;
     $scope.searchText = "";
     $scope.getStarWarsCharacters = function(param, event) {
+      // Call a Service Here
       var url = "";
       if (event == "pageChange") {
         $scope.starWarsCharactersPage = param;
-        url = "&page=" + $scope.starWarsCharactersPage;
+        url = "?page=" + $scope.starWarsCharactersPage;
         if ($scope.searchText) {
           url = url + "&search=" + $scope.searchText;
         }
@@ -54,20 +61,18 @@ angular
       }
       $http({
         method: "GET",
-        url: "https://swapi.co/api/people/?format=json" + url
+        url: "https://swapi.co/api/people/" + url
       }).then(
         function successCallback(response) {
-          console.log(response);
           $scope.totalStarWarsCharacters = response.data.count;
           $scope.starWarsCharacters = response.data.results;
-          console.log("$scope.starWarsCharacters", $scope.starWarsCharacters);
           $scope.starWarsCharactersPageIndex =
             ($scope.starWarsCharactersPage - 1) * $scope.itemsPerPage;
         },
-        function errorCallback(response) {
-          console.log("ERR,", response);
-        }
+        function errorCallback(response) {}
       );
+      // var returnObj=
+      // End
     };
     // Default Call to getStarWarsCharacters with default page as 1
     $scope.getStarWarsCharacters(1, "pageChange");
