@@ -48,7 +48,7 @@ angular
         data
       ) {
         if (err) {
-          $scope.errLoading = true;
+          $scope.errLoading = err;
         } else {
           $scope.starWarsCharactersPage = data.page;
           $scope.starWarsCharacters = data.starWarsCharacters;

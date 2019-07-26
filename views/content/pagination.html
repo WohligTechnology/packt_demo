@@ -16,11 +16,14 @@
       />
     </div>
   </div>
-  <div ng-if="!starWarsCharacters">
+  <div ng-if="!starWarsCharacters" ng-hide="errLoading">
     <h4 class="text-center">Loading ...</h4>
   </div>
+  <div ng-show="errLoading">
+    <h4 class="text-center">{{ errLoading }}</h4>
+  </div>
 
-  <table class="table table-striped" ng-if="starWarsCharacters">
+  <table class="table table-striped" ng-if="starWarsCharacters && !errLoading">
     <tr>
       <th>#</th>
       <th>Name</th>
