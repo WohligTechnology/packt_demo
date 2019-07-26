@@ -24,6 +24,11 @@ firstapp.config(function(
       url: "/form",
       templateUrl: "views/template.html",
       controller: "FormCtrl"
+    })
+    .state("fizzbuzz", {
+      url: "/fizzbuzz",
+      templateUrl: "fizzbuzz.html",
+      controller: "FizzBuzzCtrl"
     });
   $urlRouterProvider.otherwise("/");
   $locationProvider.html5Mode(isproduction);
