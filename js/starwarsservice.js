@@ -28,8 +28,10 @@ starwarsservicemod.factory("StarwarService", function($http) {
       function successCallback(response) {
         returnObj.totalStarWarsCharacters = response.data.count;
         returnObj.starWarsCharacters = response.data.results;
+        returnObj.next = response.data.next;
         returnObj.starWarsCharactersPageIndex =
           (returnObj.page - 1) * itemsPerPage;
+
         callback(null, returnObj);
       },
       function errorCallback(response) {
@@ -39,8 +41,36 @@ starwarsservicemod.factory("StarwarService", function($http) {
   }
   var returnObj = {
     callStarWars: callStarWarsPagination,
-    getAllStarWarsCharacter: function() {
-      
+    getAllStarWarsCharacter: function(data, callback) {
+      var page = 1;
+      var checkLimit = true;
+      var arrayData = [];
+      async.whilst(
+        function() {
+          return checkLimit == true;
+        },
+        function(callback) {
+          this.callStarWarsPagination(page, "pageChange", 10, "", function(
+            err,
+            data
+          ) {
+            if (err) {
+              callback(err, "Failed From getAllStarWarsCharacter");
+            } else {
+              if (data.next) {
+                return (checkLimit = false);
+              }
+              arrayData = _.union(arrayData, data.starWarsCharacters);
+              page = page + 1;
+              callback();
+            }
+          });
+        },
+        function(err) {
+          console.log("arrayData", arrayData);
+          callback(null, arrayData);
+        }
+      );
     }
   };
   return returnObj;
