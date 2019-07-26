@@ -34,9 +34,6 @@ angular
     $scope.menutitle = NavigationService.makeactive("Pagination"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
-    $scope.itemsPerPage = 10;
-
     /**
      * Start Of Star Wars Characters
      */
