@@ -74,7 +74,7 @@ angular
     $scope.menutitle = NavigationService.makeactive("Star Wars"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    StarwarService.getAllStarWarsCharacter({}, function(err, data) {
+    StarwarService.getAllStarWarsCharacter(function(err, data) {
       console.log("err,data", err, data);
     });
   })
