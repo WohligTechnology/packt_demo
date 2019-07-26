@@ -1,9 +1,5 @@
 angular
-  .module("phonecatControllers", [
-    "templateservicemod",
-    "navigationservice",
-    "ui.bootstrap"
-  ])
+  .module("phonecatControllers", ["templateservicemod", "navigationservice"])
 
   .controller("HomeCtrl", function(
     $scope,
@@ -15,13 +11,6 @@ angular
     $scope.menutitle = NavigationService.makeactive("Home"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
-    $scope.mySlides = [
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg",
-      "http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg"
-    ];
   })
 
   .controller("FormCtrl", function(
@@ -51,33 +40,5 @@ angular
       toParams,
       fromState,
       fromParams
-    ) {
-      $(window).scrollTop(0);
-    });
-    $.fancybox.close(true);
-  })
-
-  .controller("languageCtrl", function(
-    $scope,
-    TemplateService,
-    $translate,
-    $rootScope
-  ) {
-    $scope.changeLanguage = function() {
-      console.log("Language CLicked");
-
-      if (!$.jStorage.get("language")) {
-        $translate.use("hi");
-        $.jStorage.set("language", "hi");
-      } else {
-        if ($.jStorage.get("language") == "en") {
-          $translate.use("hi");
-          $.jStorage.set("language", "hi");
-        } else {
-          $translate.use("en");
-          $.jStorage.set("language", "en");
-        }
-      }
-      //  $rootScope.$apply();
-    };
+    ) {});
   });

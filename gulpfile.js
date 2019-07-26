@@ -13,14 +13,3 @@ gulp.task("sass", function() {
 gulp.task("sass:watch", function() {
   gulp.watch("./sass/**/*.scss", ["sass"]);
 });
-
-// Static server
-gulp.task("browser-sync", function() {
-  browserSync.init({
-    server: {
-      baseDir: "./"
-    }
-  });
-});
-
-gulp.task("default", ["sass", "sass:watch", "browser-sync"]);
