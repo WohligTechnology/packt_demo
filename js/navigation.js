@@ -15,7 +15,7 @@ var navigationservice = angular
         anchor: "pagination"
       },
       {
-        name: "Star Wars",
+        name: "Star Wars FAQ",
         classis: "active",
         anchor: "star-wars"
       }

@@ -7120,3 +7120,12 @@ h2.small {
 
 .title-text {
   text-transform: capitalize; }
+
+.questions {
+  padding-bottom: 20px; }
+  .questions .question {
+    font-size: 17px;
+    font-weight: 500; }
+  .questions .answer {
+    font-size: 17px;
+    font-style: italic; }

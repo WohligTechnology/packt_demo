@@ -72,12 +72,12 @@ angular
     StarwarService
   ) {
     $scope.template = TemplateService.changecontent("star-wars"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("Star Wars"); //This is the Title of the Website
+    $scope.menutitle = NavigationService.makeactive("Star Wars FAQ"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     StarwarService.getAllStarWarsCharacter(function(err, data) {
       if (err) {
-        $scope.errLoading = true;
+        $scope.errLoading = err;
       } else {
         $scope.allCharacters = data;
         $scope.avgHeight = _.chain(allCharacters)
