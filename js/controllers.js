@@ -1,12 +1,7 @@
 angular
   .module("phonecatControllers", ["templateservicemod", "navigationservice"])
 
-  .controller("HomeCtrl", function(
-    $scope,
-    TemplateService,
-    NavigationService,
-    $timeout
-  ) {
+  .controller("HomeCtrl", function($scope, TemplateService, NavigationService) {
     $scope.template = TemplateService.changecontent("home"); //Use same name of .html file
     $scope.menutitle = NavigationService.makeactive("Fizz Buzz"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
@@ -26,8 +21,7 @@ angular
   .controller("PaginationCtrl", function(
     $scope,
     TemplateService,
-    NavigationService,
-    $timeout
+    NavigationService
   ) {
     $scope.template = TemplateService.changecontent("pagination"); //Use same name of .html file
     $scope.menutitle = NavigationService.makeactive("Pagination"); //This is the Title of the Website
@@ -37,8 +31,7 @@ angular
   .controller("StarWarsCtrl", function(
     $scope,
     TemplateService,
-    NavigationService,
-    $timeout
+    NavigationService
   ) {
     $scope.template = TemplateService.changecontent("star-wars"); //Use same name of .html file
     $scope.menutitle = NavigationService.makeactive("Star Wars"); //This is the Title of the Website
