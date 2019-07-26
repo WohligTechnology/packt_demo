@@ -13,23 +13,27 @@ angular
     $scope.navigation = NavigationService.getnav();
   })
 
-  .controller("FormCtrl", function(
+  .controller("PaginationCtrl", function(
     $scope,
     TemplateService,
     NavigationService,
     $timeout
   ) {
-    $scope.template = TemplateService.changecontent("form"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("Form"); //This is the Title of the Website
+    $scope.template = TemplateService.changecontent("pagination"); //Use same name of .html file
+    $scope.menutitle = NavigationService.makeactive("pagination"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
-    $scope.formSubmitted = false;
-
-    $scope.submitForm = function(data) {
-      console.log(data);
-      $scope.formSubmitted = true;
-    };
+  })
+  .controller("StarWarsCtrl", function(
+    $scope,
+    TemplateService,
+    NavigationService,
+    $timeout
+  ) {
+    $scope.template = TemplateService.changecontent("star-wars"); //Use same name of .html file
+    $scope.menutitle = NavigationService.makeactive("star-wars"); //This is the Title of the Website
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
   })
 
   .controller("headerctrl", function($scope, TemplateService) {

@@ -25,7 +25,7 @@ firstapp.config(function(
       templateUrl: "views/template.html",
       controller: "PaginationCtrl"
     })
-    .state("pagination", {
+    .state("star-wars", {
       url: "/star-wars",
       templateUrl: "views/template.html",
       controller: "StarWarsCtrl"
