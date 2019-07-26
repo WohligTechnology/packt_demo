@@ -8,7 +8,7 @@ angular
     $timeout
   ) {
     $scope.template = TemplateService.changecontent("home"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("Home"); //This is the Title of the Website
+    $scope.menutitle = NavigationService.makeactive("home"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
