@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title ng-bind="'Pact Assignment | '+template.title">Pact Assignment</title>
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
     <script>
       var isproduction = false;
     </script>
@@ -18,7 +18,7 @@
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="node_modules/lodash/lodash.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/navigation.js"></script>
@@ -32,5 +32,6 @@
 
   <body>
     <div class="repeated-item" ui-view></div>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
   </body>
 </html>
