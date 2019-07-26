@@ -42,7 +42,7 @@ angular
      */
     $scope.starWarsCharactersPage = 1;
     $scope.starWarsCharactersPageIndex = 0;
-    $scope.starWarsCharacters = [];
+    $scope.starWarsCharacters = null;
     $scope.totalStarWarsCharacters = 0;
     $scope.searchText = "";
     $scope.getStarWarsCharacters = function(param, event) {
