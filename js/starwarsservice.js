@@ -67,7 +67,6 @@ starwarsservicemod.factory("StarwarService", function($http) {
           });
         },
         function(err) {
-          console.log("arrayData", arrayData);
           returnObj.allCharacters = arrayData;
           callback(null, arrayData);
         }
