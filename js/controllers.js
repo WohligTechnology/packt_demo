@@ -8,7 +8,7 @@ angular
     $timeout
   ) {
     $scope.template = TemplateService.changecontent("home"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("home"); //This is the Title of the Website
+    $scope.menutitle = NavigationService.makeactive("Fizz Buzz"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
@@ -30,7 +30,7 @@ angular
     $timeout
   ) {
     $scope.template = TemplateService.changecontent("pagination"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("pagination"); //This is the Title of the Website
+    $scope.menutitle = NavigationService.makeactive("Pagination"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
@@ -41,7 +41,7 @@ angular
     $timeout
   ) {
     $scope.template = TemplateService.changecontent("star-wars"); //Use same name of .html file
-    $scope.menutitle = NavigationService.makeactive("star-wars"); //This is the Title of the Website
+    $scope.menutitle = NavigationService.makeactive("Star Wars"); //This is the Title of the Website
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
