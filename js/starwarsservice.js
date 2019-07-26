@@ -70,7 +70,22 @@ starwarsservicemod.factory("StarwarService", function($http) {
         function(err) {
           allCharacters = arrayData;
           returnObj.allCharacters = arrayData;
-          callback(null, arrayData);
+          _.each(allCharacters, function(n) {
+            if (n.birth_year == "unknown") {
+              n.birthOfYear = undefined;
+            } else if (n.birth_year.includes("BBY")) {
+              n.birthOfYear = _.parseInt(n.birth_year);
+            } else if (n.birth_year.includes("ABY")) {
+              n.birthOfYear = _.parseInt(n.birth_year) * -1;
+            }
+
+            if (n.height == "unknown") {
+              n.heightInt = undefined;
+            } else {
+              n.heightInt = _.parseInt(n.height);
+            }
+          });
+          callback(null, allCharacters);
         }
       );
     }
