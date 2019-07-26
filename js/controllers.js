@@ -2,8 +2,7 @@ angular
   .module("phonecatControllers", [
     "templateservicemod",
     "navigationservice",
-    "ui.bootstrap",
-    "ngSanitize"
+    "ui.bootstrap"
   ])
 
   .controller("HomeCtrl", function(
