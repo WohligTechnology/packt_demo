@@ -42,17 +42,15 @@ starwarsservicemod.factory("StarwarService", function($http) {
   var returnObj = {
     callStarWars: callStarWarsPagination,
     getAllStarWarsCharacter: function(callback) {
-      console.log("!!!");
       var page = 1;
       var checkLimit = true;
       var arrayData = [];
       async.whilst(
-        function() {
-          return checkLimit;
+        function(callback) {
+          return callback(null, checkLimit);
         },
         function(callback) {
-          console.log("!!!!222");
-          this.callStarWarsPagination(page, "pageChange", 10, "", function(
+          callStarWarsPagination(page, "pageChange", 10, "", function(
             err,
             data
           ) {
