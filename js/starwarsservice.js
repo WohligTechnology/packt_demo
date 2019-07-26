@@ -57,8 +57,8 @@ starwarsservicemod.factory("StarwarService", function($http) {
             if (err) {
               callback(err, "Failed From getAllStarWarsCharacter");
             } else {
-              if (data.next) {
-                return (checkLimit = false);
+              if (_.isEmpty(data.next)) {
+                checkLimit = false;
               }
               arrayData = _.union(arrayData, data.starWarsCharacters);
               page = page + 1;
@@ -68,6 +68,7 @@ starwarsservicemod.factory("StarwarService", function($http) {
         },
         function(err) {
           console.log("arrayData", arrayData);
+          returnObj.allCharacters = arrayData;
           callback(null, arrayData);
         }
       );

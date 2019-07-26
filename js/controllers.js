@@ -75,7 +75,11 @@ angular
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     StarwarService.getAllStarWarsCharacter(function(err, data) {
-      console.log("err,data", err, data);
+      if (err) {
+        $scope.allCharacters = [];
+      } else {
+        $scope.allCharacters = data;
+      }
     });
   })
 
