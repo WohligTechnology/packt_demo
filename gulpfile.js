@@ -46,62 +46,6 @@ gulp.task("imagemin", function() {
     .pipe(gulp.dest("./img2/"));
 });
 
-gulp.task("deploy", function() {
-  var prompt = require("gulp-prompt");
-  return gulp.src("./index.html").pipe(
-    prompt.prompt(
-      [
-        {
-          type: "password",
-          name: "password",
-          message: "Enter Encryption Password:"
-        }
-      ],
-      function(res) {
-        password = res.password;
-        gulp.start("ftp");
-      }
-    )
-  );
-});
-
-gulp.task("ftp", function() {
-  var CryptoJS = require("crypto-js");
-  var ftp = require("vinyl-ftp");
-  var decrypted = CryptoJS.AES.decrypt(ftpString, password);
-  var decryptedJSON = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-
-  decryptedJSON.log = gutil.log;
-  decryptedJSON.parallel = 1;
-  var conn = ftp.create(decryptedJSON);
-
-  var globs = ["./production/**"];
-
-  // using base = '.' will transfer everything to /public_html correctly
-  // turn off buffering in gulp.src for best performance
-
-  return gulp
-    .src(globs, {
-      base: "./production",
-      buffer: false
-    })
-    .pipe(conn.newer("/public_html/" + uploadingFolder)) // only upload newer files
-    .pipe(conn.dest("/public_html/" + uploadingFolder));
-});
-
-gulp.task("clean:production", function() {
-  return gulp
-    .src("./production", {
-      read: false
-    })
-    .pipe(wait(200))
-    .pipe(
-      clean({
-        force: true
-      })
-    );
-});
-
 gulp.task("clean:tmp", function() {
   return gulp
     .src("./tmp", {
@@ -152,18 +96,6 @@ gulp.task("copy:indexhtml", function() {
       prefix: 1
     })
   );
-});
-
-gulp.task("gzipfile", function() {
-  var gzip = require("gulp-gzip");
-  gulp
-    .src("./w/index.html")
-    .pipe(
-      gzip({
-        preExtension: "gz"
-      })
-    )
-    .pipe(gulp.dest("./production/"));
 });
 
 gulp.task("tarball", function() {
