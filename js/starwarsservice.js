@@ -1,4 +1,5 @@
 var starwarsservicemod = angular.module("starwarsservicemod", []);
+var allCharacters = [];
 starwarsservicemod.factory("StarwarService", function($http) {
   function callStarWarsPagination(
     param,
@@ -67,6 +68,7 @@ starwarsservicemod.factory("StarwarService", function($http) {
           });
         },
         function(err) {
+          allCharacters = arrayData;
           returnObj.allCharacters = arrayData;
           callback(null, arrayData);
         }
