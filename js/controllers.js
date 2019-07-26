@@ -95,14 +95,10 @@ angular
           $scope.maxAgeCharacter.birthOfYear,
           $scope.minAgeCharacter.birthOfYear
         );
-        console.log(
-          "$scope.minAgeCharacter",
-          $scope.minAgeCharacter,
-          "$scope.maxAgeCharacter",
-          $scope.maxAgeCharacter,
-          "$scope.diffCharacter",
-          $scope.diffCharacter
-        );
+        $scope.eyeGroup = _.groupBy(allCharacters, function(o) {
+          return o.eye_color;
+        });
+        console.log("$scope.eyeGroup", $scope.eyeGroup);
       }
     });
   })
