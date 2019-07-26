@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@uirouter/core@5.0.23":
+  version "5.0.23"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.23.tgz#363b4bea635a1b48900dc7e65793a65a3b58a79e"
+  integrity sha512-rwFOH++z/KY8y+h0IOpQ5uC8Nim6E0EBCQrIjhVCr+XKYXgpK+VdtuOLFdogvbJ3AAi5Z7ei00qdEr7Did5CAg==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -34,6 +39,18 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
+
+angular-ui-router@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.22.tgz#54a88a06baba576e186fa1b4d5aac913eb4ccb08"
+  integrity sha512-cuq0+Di6spKEIQ1aZCGORPU9uZzJRFzuiMQDB2vLUDlo1DS8tR8/KxlThqmz6iw+8KtmUArI+5IMINSp/jwUKg==
+  dependencies:
+    "@uirouter/core" "5.0.23"
+
+angular@^1.7.8:
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.8.tgz#b77ede272ce1b261e3be30c1451a0b346905a3c9"
+  integrity sha512-wtef/y4COxM7ZVhddd7JtAAhyYObq9YXKar9tsW7558BImeVYteJiTxCKeJOL45lJ/+7B4wrAC49j8gTFYEthg==
 
 ansi-colors@^1.0.1:
   version "1.1.0"
