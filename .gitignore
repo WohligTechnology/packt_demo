@@ -1,13 +1,6 @@
 bower_components/
 node_modules/
-w/
-.sass-cache/
-*.tar
-production/
 *.zip
-css/
-img2/
-
 .DS_STORE
 .netbeans
 nbproject
